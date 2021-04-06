@@ -34,7 +34,7 @@ class Employee(BaseModel):
     
     name = models.CharField('name', max_length=50)
     last_name = models.CharField('apellido',max_length=50)
-    ci = models.IntegerField('cedula',max_length=12,unique=True)
+    ci = models.IntegerField('cedula',unique=True)
     email = models.EmailField('email',unique=True)
     is_active = models.BooleanField('Esta activo', default= True)
     # Department = models.ForeignKey(Department, on_delete=CASCADE,verbose_name='departamento', null= True)

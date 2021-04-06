@@ -2,13 +2,18 @@ from rest_framework import generics, serializers, status
 from rest_framework.response import Response
 from rest_framework import viewsets
 from empleado.api.serializer import Employeeserializer, Departmentserializer, Jobserializer
+from rest_framework import filters
 
 
 
 class EmployeeListCreateAPIView(generics.ListCreateAPIView):
 
     serializer_class= Employeeserializer
-    queryset=Employeeserializer.Meta.model.objects.filter(state=True)
+    queryset=Employeeserializer.Meta.model.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name','last_name','job__name']
+
+
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)

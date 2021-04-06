@@ -21,6 +21,7 @@ from users.views import Login,Logout,UserToken
 
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuario/',include('users.API.url') ),
@@ -31,4 +32,7 @@ urlpatterns = [
     path('department/', include('empleado.api.routers')),
     path('job/', include('empleado.api.routers')),
     path('refresh-token/',UserToken.as_view(), name= 'refresh token'),
+    path('location/',include('location.api.url'), name='locacion'),
+    path('country/', include('location.api.router')),
+    path('city/', include('location.api.router'))
     ]
