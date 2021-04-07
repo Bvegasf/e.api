@@ -39,6 +39,18 @@ class ContinentalRegionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestr
 class CountryModelViewset(viewsets.ModelViewSet):
     serializer_class = CountryModelSerializer
 
+    def get_queryset(self, pk = None ):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.filter()
+
+        return self.get_serializer().Meta.model.objects.filter(id=pk).firts()
+
+
+
+    def list(self, request):
+        products_serializer=self.get_serializer(self.get_queryset(),many=True)
+        return Response(products_serializer.data,status=status.HTTP_200_OK)
+
     def create(self, request):
         serializers= self.serializer_class(data = request.data)
         if serializers.is_valid():
@@ -53,6 +65,14 @@ class CountryModelViewset(viewsets.ModelViewSet):
 
 class CityModelViewset(viewsets.ModelViewSet):
     serializer_class = CityModelSerializer
+
+    def get_queryset(self, pk = None ):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.filter()
+
+        return self.get_serializer().Meta.model.objects.filter(id=pk).firts()
+
+    
 
 
 

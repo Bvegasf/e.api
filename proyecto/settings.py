@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'empleado',
     'django_filters',
-    'location'
+    'location',
+    'branch'
     
     
 ]
