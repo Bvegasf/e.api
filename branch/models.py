@@ -22,3 +22,12 @@ class branch(models.Model):
     city = models.ForeignKey(City, on_delete= CASCADE, null= True, blank= True)
     adress = models.TextField(max_length= 400, blank=True)
 
+    def __str__(self) -> str:
+        return f'{self.name} nucleo: {self.city} direccion: {self.adress}'
+
+
+    class Meta:
+        verbose_name = 'sucursal'
+        verbose_name_plural = 'sucursales'
+
+

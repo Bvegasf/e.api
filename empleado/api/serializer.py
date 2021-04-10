@@ -14,8 +14,9 @@ class Employeeserializer(serializers.ModelSerializer):
             'name':instance.name,
             'last_name':instance.last_name,
             
-            'job': instance.job.description if instance.job.description is not None else '',
-            'department':Departmentserializer(instance.job.department).data if Departmentserializer(instance.job.department).data is not None else '',
+            'job': instance.job.description if instance.job is not None else '',
+            'department':instance.job.department.name if instance.job.department is not None else '',
+            'branch':instance.branch.name if instance.branch is not None else ''
             
         }
         

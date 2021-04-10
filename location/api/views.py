@@ -9,6 +9,7 @@ class ContinentalRegionListCreatedAPIView(generics.ListCreateAPIView):
 
     serializer_class = ContinentalRegionModelSerializer
     queryset = ContinentalRegionModelSerializer.Meta.model.objects.all()
+    
 
     def post(self, request):
         serializer = self.serializer_class(data = request.data)

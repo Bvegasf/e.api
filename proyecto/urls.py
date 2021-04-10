@@ -34,5 +34,6 @@ urlpatterns = [
     path('refresh-token/',UserToken.as_view(), name= 'refresh token'),
     path('location/',include('location.api.url'), name='locacion'),
     path('country/', include('location.api.router')),
-    path('city/', include('location.api.router'))
+    path('city/', include('location.api.router')),
+    path('branch', include('branch.api.router'))
     ]

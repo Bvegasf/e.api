@@ -1,4 +1,5 @@
 
+from branch.models import branch
 from django.db import models
 from django.db.models.deletion import CASCADE
 from base.models import BaseModel, models
@@ -40,6 +41,7 @@ class Employee(BaseModel):
     # Department = models.ForeignKey(Department, on_delete=CASCADE,verbose_name='departamento', null= True)
     job = models.ForeignKey(Job, on_delete=CASCADE, verbose_name = 'role', null = True)
     image = models.ImageField(upload_to='employee/', blank=True, null= True)
+    branch = models.ForeignKey(branch, on_delete=CASCADE, null= True)
 
     class Meta:
         verbose_name= 'Empleado'

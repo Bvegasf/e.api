@@ -8,6 +8,7 @@ from rest_framework import viewsets
 from users.authentication_mixing import authentication
 
 
+
 # vista de lista generica
 #class ProductsListAPIView(GeneraListApiView):
     #serializer_class = Productsserializer

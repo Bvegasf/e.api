@@ -10,8 +10,9 @@ class EmployeeListCreateAPIView(generics.ListCreateAPIView):
 
     serializer_class= Employeeserializer
     queryset=Employeeserializer.Meta.model.objects.all()
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['name','last_name','job__name']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['name','last_name','job__description']
+    ordering_fields= ['name', 'job__description']
 
 
 
@@ -32,9 +33,9 @@ class EmployeeRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
     def get_queryset(self, pk=None):
 
         if pk is None:
-            return self.get_serializer().Meta.model.objects.filter(state=True)
+            return self.get_serializer().Meta.model.objects.all()
         else:
-            return self.get_serializer().Meta.model.objects.filter(id=pk ,state=True).first()
+            return self.get_serializer().Meta.model.objects.filter(id=pk).first()
         
     def delete(self, request ,pk=None):
         empleado = self.get_queryset().filter(id=pk).first()
@@ -53,17 +54,15 @@ class EmployeeRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
 
         return Response({'message':'No existe un empleado con los datos ingresado'}, status = status.HTTP_400_BAD_REQUEST)
 
-
     def put(self, request, pk = None):
         if self.get_queryset(pk):
 
-            employee_serializer = self.serializer_class(self.get_queryset(pk, data=request.data))
+            employee_serializer = self.serializer_class(self.get_queryset(pk), data=request.data)
             if employee_serializer.is_valid():
                 employee_serializer.save()
                 return Response(employee_serializer.data, status = status.HTTP_200_OK)
 
             return Response(employee_serializer.errors, status = status.HTTP_400_BAD_REQUEST)
-
 
 class DepartmentViewset(viewsets.ModelViewSet):
     serializer_class = Departmentserializer

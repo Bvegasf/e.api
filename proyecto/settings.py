@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'empleado',
     'django_filters',
     'location',
-    'branch'
+    'branch',
+    'permissions'
     
     
 ]
