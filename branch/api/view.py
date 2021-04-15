@@ -3,7 +3,7 @@ from branch.api.serializer import BranchModelserializer
 from branch.models import branch
 from rest_framework.response import Response
 from rest_framework import status
-class BranchModelViewset(viewsets.ModelViewSet):
+class BranchViewSet(viewsets.ModelViewSet):
     serializer_class = BranchModelserializer
 
     def get_queryset(self,pk = None):

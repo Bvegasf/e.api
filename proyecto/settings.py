@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django_filters',
     'location',
     'branch',
-    'permissions'
+    'permissions',
+    'drf_yasg'
     
     
 ]

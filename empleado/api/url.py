@@ -1,5 +1,5 @@
 from django.urls import path
-from empleado.api.view import EmployeeListCreateAPIView, EmployeeRetrieveUpdateDestroyAPIView, DepartmentViewset, JobViewset
+from empleado.api.view import EmployeeListCreateAPIView, EmployeeRetrieveUpdateDestroyAPIView, DepartmentViewSet, JobViewSet
 
 urlpatterns = [
     path('employee/',EmployeeListCreateAPIView.as_view(), name= 'Empleados'),

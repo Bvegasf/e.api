@@ -64,7 +64,7 @@ class EmployeeRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
 
             return Response(employee_serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
-class DepartmentViewset(viewsets.ModelViewSet):
+class DepartmentViewSet(viewsets.ModelViewSet):
     serializer_class = Departmentserializer
 
     def get_queryset(self,pk=None):
@@ -109,7 +109,7 @@ class DepartmentViewset(viewsets.ModelViewSet):
     
 
 
-class JobViewset(viewsets.ModelViewSet):
+class JobViewSet(viewsets.ModelViewSet):
     serializer_class = Jobserializer
 
     def get_queryset(self,pk=None):

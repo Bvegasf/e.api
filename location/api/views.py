@@ -37,7 +37,7 @@ class ContinentalRegionRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestr
         return Response({'error':'los datos ingresado no son correcto'}, status = status.HTTP_400_BAD_REQUEST) 
 
     
-class CountryModelViewset(viewsets.ModelViewSet):
+class CountryViewSet(viewsets.ModelViewSet):
     serializer_class = CountryModelSerializer
 
     def get_queryset(self, pk = None ):
@@ -64,7 +64,7 @@ class CountryModelViewset(viewsets.ModelViewSet):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CityModelViewset(viewsets.ModelViewSet):
+class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CityModelSerializer
 
     def get_queryset(self, pk = None ):

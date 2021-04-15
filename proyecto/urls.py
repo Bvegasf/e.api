@@ -15,11 +15,25 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 from rest_framework import permissions
 from users.views import Login,Logout,UserToken
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
-
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Documentacion de API",
+      default_version='v0.1',
+      description="Documentacion base de la API",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="brayanjovegas@gmail.com"),
+      license=openapi.License(name="BD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 
 urlpatterns = [
@@ -35,5 +49,8 @@ urlpatterns = [
     path('location/',include('location.api.url'), name='locacion'),
     path('country/', include('location.api.router')),
     path('city/', include('location.api.router')),
-    path('branch', include('branch.api.router'))
+    path('branch', include('branch.api.router')),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+   path(r'swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+   path(r'redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     ]

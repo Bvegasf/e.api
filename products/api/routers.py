@@ -2,13 +2,13 @@
 from rest_framework import urlpatterns
 from rest_framework.routers import DefaultRouter
 #se importa el Viewset que se usara
-from products.api.views.products_view import ProductViewset
+from products.api.views.products_view import ProductViewSet
 
 # se define el router
 router= DefaultRouter()
 # Ve realiza el registro del router, con r'' se define la url y se llama al viewset
 
-router.register(r'products',ProductViewset, basename = 'products')
+router.register(r'products',ProductViewSet, basename = 'products')
 
 urlpatterns = router.urls
 

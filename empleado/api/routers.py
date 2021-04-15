@@ -6,8 +6,8 @@ from empleado.api.view import *
 router = DefaultRouter()
 
 
-router.register(r'department', DepartmentViewset, basename = 'department')
-router.register(r'job', JobViewset, basename = 'Job')
+router.register(r'department', DepartmentViewSet, basename = 'department')
+router.register(r'job', JobViewSet, basename = 'Job')
 
 
 urlpatterns = router.urls

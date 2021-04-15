@@ -63,7 +63,7 @@ class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
             
 
 #Clases viewset
-class ProductViewset(authentication, viewsets.ModelViewSet):
+class ProductViewSet(authentication, viewsets.ModelViewSet):
 
     serializer_class = Productsserializer
 
