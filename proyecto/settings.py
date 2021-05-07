@@ -41,13 +41,15 @@ INSTALLED_APPS = [
     'base',
     'products',
     'rest_framework',
+    #Paquete de token en DRF(token de secuencia binaria)
     'rest_framework.authtoken',
     'empleado',
     'django_filters',
     'location',
     'branch',
     'permissions',
-    'drf_yasg'
+    'drf_yasg',
+    'corsheaders'
     
     
 ]
@@ -57,6 +59,8 @@ TOKEN_EXPIRED_AFTER_SECONDS = 900
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'proyecto.urls'
@@ -148,5 +153,13 @@ AUTH_USER_MODEL = 'users.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+    "http://localhost:3000",
+
+]
 
 STATIC_URL = '/static/'
